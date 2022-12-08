@@ -41,19 +41,19 @@ class TelegramUserController extends Controller
             if(!$telegramUser) {
                 $telegramNewUser = new TelegramUser();
 
-                if($resultItem->message->from->first_name) {
+                if(isset($resultItem->message->from->first_name)) {
                     $telegramNewUser->first_name = $resultItem->message->from->first_name;
                 } else {
                     $telegramNewUser->first_name = 'no firstname';
                 }
 
-                if($resultItem->message->from->last_name) {
+                if(isset($resultItem->message->from->last_name)) {
                     $telegramNewUser->last_name = $resultItem->message->from->last_name;
                 } else {
                     $telegramNewUser->last_name = 'no lastname';
                 }
                 
-                if($resultItem->message->from->username) {
+                if(isset($resultItem->message->from->username)) {
                     $telegramNewUser->username = $resultItem->message->from->username;
                 } else {
                     $telegramNewUser->username = 'no username';
