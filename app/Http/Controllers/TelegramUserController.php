@@ -11,7 +11,7 @@ class TelegramUserController extends Controller
     public function check()
     {
         $url = "https://api.telegram.org/bot";
-        $url .= Setting::find(1);
+        $url .= Setting::find(1)->telegram_api_key;
         $url .= "/getupdates";
 
         $curl = curl_init($url);
