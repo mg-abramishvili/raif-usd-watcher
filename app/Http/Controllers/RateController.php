@@ -63,7 +63,7 @@ class RateController extends Controller
         $url .= "?chat_id=";
         $url .= $user->chat_id;
         $url .= "&text=";
-        $url .= $rate->rate;
+        $url .= "Курс: " . $rate->rate . "; Сумма: " . round(3492000 / $rate->rate) . ")";
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
