@@ -38,33 +38,31 @@ class TelegramUserController extends Controller
         {
             $telegramUser = TelegramUser::where('chat_id', $resultItem->message->from->id)->first();
 
-            if($telegramUser) {
-                return;
+            if(!$telegramUser) {
+                $telegramNewUser = new TelegramUser();
+
+                if($resultItem->message->from->first_name) {
+                    $telegramNewUser->first_name = $resultItem->message->from->first_name;
+                } else {
+                    $telegramNewUser->first_name = 'no firstname';
+                }
+
+                if($resultItem->message->from->last_name) {
+                    $telegramNewUser->last_name = $resultItem->message->from->last_name;
+                } else {
+                    $telegramNewUser->last_name = 'no lastname';
+                }
+                
+                if($resultItem->message->from->username) {
+                    $telegramNewUser->username = $resultItem->message->from->username;
+                } else {
+                    $telegramNewUser->username = 'no username';
+                }
+
+                $telegramNewUser->chat_id = $resultItem->message->from->id;
+
+                $telegramNewUser->save();
             }
-
-            $telegramNewUser = new TelegramUser();
-
-            if($resultItem->message->from->first_name) {
-                $telegramNewUser->first_name = $resultItem->message->from->first_name;
-            } else {
-                $telegramNewUser->first_name = 'no firstname';
-            }
-
-            if($resultItem->message->from->last_name) {
-                $telegramNewUser->last_name = $resultItem->message->from->last_name;
-            } else {
-                $telegramNewUser->last_name = 'no lastname';
-            }
-            
-            if($resultItem->message->from->username) {
-                $telegramNewUser->username = $resultItem->message->from->username;
-            } else {
-                $telegramNewUser->username = 'no username';
-            }
-
-            $telegramNewUser->chat_id = $resultItem->message->from->id;
-
-            $telegramNewUser->save();
         }
     }
 }
