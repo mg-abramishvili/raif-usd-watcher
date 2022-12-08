@@ -38,9 +38,9 @@ class RateController extends Controller
 
         $lastRate = Rate::orderBy('created_at', 'desc')->first();
 
-        if($lastRate && $lastRate->rate == $responseRate) {
-            return;
-        }
+        // if($lastRate && $lastRate->rate == $responseRate) {
+        //     return;
+        // }
 
         $rate = new Rate();
         $rate->rate = $responseRate;
@@ -48,6 +48,7 @@ class RateController extends Controller
         $rate->save();
         
         $telegramUsers = TelegramUser::all();
+        return $telegramUsers;
         foreach($telegramUsers as $user)
         {
             $this->sendMessageToTelgeram($user, $rate);
@@ -58,7 +59,7 @@ class RateController extends Controller
     {
         $url = "https://api.telegram.org/bot";
         $url .= Setting::find(1)->telegram_api_key;
-        $url .= "/sendmessage";
+        $url .= "/sendMessage";
         $url .= "?char_id=";
         $url .= $user->chat_id;
         $url .= "&text=";
