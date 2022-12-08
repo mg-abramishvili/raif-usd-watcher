@@ -51,7 +51,7 @@ class RateController extends Controller
         
         foreach($telegramUsers as $user)
         {
-            $this->sendMessageToTelgeram($user, $rate);
+            return $this->sendMessageToTelgeram($user, $rate);
         }
     }
 
@@ -64,6 +64,8 @@ class RateController extends Controller
         $url .= $user->chat_id;
         $url .= "&text=";
         $url .= $rate->rate;
+
+        return $url;
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
