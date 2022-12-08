@@ -36,7 +36,7 @@ class TelegramUserController extends Controller
 
         foreach($responseJson->result as $resultItem)
         {
-            $telegramUser = TelegramUser::where('chat_id', $resultItem->message->chat->id)->first();
+            $telegramUser = TelegramUser::where('chat_id', $resultItem->message->from->id)->first();
 
             if($telegramUser) {
                 return;
@@ -44,13 +44,13 @@ class TelegramUserController extends Controller
 
             return $resultItem;
 
-            // $telegramNewUser = new TelegramUser();
-            // $telegramNewUser->first_name = $resultItem['first_name'];
-            // $telegramNewUser->last_name = $resultItem['last_name'];
-            // $telegramNewUser->username = $resultItem['username'];
-            // $telegramNewUser->chat_id = $resultItem['chat_id'];
+            $telegramNewUser = new TelegramUser();
+            $telegramNewUser->first_name = $resultItem->message->from->first_name;
+            $telegramNewUser->last_name = $resultItem->message->from->last_name;
+            $telegramNewUser->username = $resultItem->message->from->username;
+            $telegramNewUser->chat_id = $resultItem->message->from->chat_id;
 
-            // $telegramNewUser->save();
+            $telegramNewUser->save();
         }
     }
 }
