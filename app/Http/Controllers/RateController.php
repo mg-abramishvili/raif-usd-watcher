@@ -48,7 +48,7 @@ class RateController extends Controller
         $rate->save();
         
         $telegramUsers = TelegramUser::all();
-        return $telegramUsers;
+        
         foreach($telegramUsers as $user)
         {
             $this->sendMessageToTelgeram($user, $rate);
