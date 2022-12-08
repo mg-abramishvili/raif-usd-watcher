@@ -38,9 +38,9 @@ class RateController extends Controller
 
         $lastRate = Rate::orderBy('created_at', 'desc')->first();
 
-        // if($lastRate && $lastRate->rate == $responseRate) {
-        //     return;
-        // }
+        if($lastRate && $lastRate->rate == $responseRate) {
+            return;
+        }
 
         $rate = new Rate();
         $rate->rate = $responseRate;
@@ -60,12 +60,10 @@ class RateController extends Controller
         $url = "https://api.telegram.org/bot";
         $url .= Setting::find(1)->telegram_api_key;
         $url .= "/sendMessage";
-        $url .= "?char_id=";
+        $url .= "?chat_id=";
         $url .= $user->chat_id;
         $url .= "&text=";
         $url .= $rate->rate;
-
-        return $url;
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
