@@ -43,10 +43,10 @@ class TelegramUserController extends Controller
             }
 
             $telegramNewUser = new TelegramUser();
-            $telegramNewUser->first_name = $telegramUser->first_name;
-            $telegramNewUser->last_name = $telegramUser->last_name;
-            $telegramNewUser->username = $telegramUser->username;
-            $telegramNewUser->chat_id = $telegramUser->chat_id;
+            $telegramNewUser->first_name = $resultItem->first_name;
+            $telegramNewUser->last_name = $resultItem->last_name;
+            $telegramNewUser->username = $resultItem->username;
+            $telegramNewUser->chat_id = $resultItem->chat_id;
 
             $telegramNewUser->save();
         }
