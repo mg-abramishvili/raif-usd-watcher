@@ -42,8 +42,6 @@ class TelegramUserController extends Controller
                 return;
             }
 
-            return $resultItem;
-
             $telegramNewUser = new TelegramUser();
             $telegramNewUser->first_name = $resultItem->message->from->first_name;
             $telegramNewUser->last_name = $resultItem->message->from->last_name;
