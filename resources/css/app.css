@@ -54,13 +54,17 @@ body {
     display: flex;
     align-items: center;
     background-color: #fff;
-    padding: 40px;
+    padding: 20px;
     border-radius: 15px;
     margin-bottom: 20px;
     flex-wrap: wrap;
     justify-content: center;
 }
-
+@media (min-width: 992px) {
+    .big-column {
+        padding: 40px
+    }
+}
 .middle-column {
     padding: 20px 40px;
     display: flex;
