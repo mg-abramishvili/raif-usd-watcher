@@ -22,7 +22,7 @@
                                 {{ minRate.rate }}
                             </div>
                             <div>
-                                ${{ $filters.currencyFormat(3492000 / rates[0].rate) }}
+                                ${{ $filters.currencyFormat(3492000 / minRate.rate) }}
                             </div>
                         </div>
                     </div>
