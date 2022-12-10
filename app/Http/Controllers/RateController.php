@@ -98,7 +98,7 @@ class RateController extends Controller
         }
 
         $rate = new KoronaRate();
-        $rate->rate = $responseRate;
+        $rate->rate = round($responseRate, 2);
 
         $rate->save();
         
