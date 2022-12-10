@@ -4,6 +4,7 @@
             <div class="col-12 col-lg-4">
                 <div class="big">
                     <div class="big-column">
+                        <h3>Райффайзен</h3>
                         <h1>{{ rates.raif[0].rate }}</h1>
                         <h2>${{ $filters.currencyFormat(3492000 / rates.raif[0].rate) }}</h2>
                     </div>
@@ -12,6 +13,7 @@
             <div class="col-12 col-lg-4">
                 <div class="big">
                     <div class="big-column">
+                        <h3>Корона</h3>
                         <h1>{{ rates.korona[0].rate }}</h1>
                         <h2>${{ $filters.currencyFormat(3492000 / rates.korona[0].rate) }}</h2>
                     </div>
@@ -20,6 +22,7 @@
             <div class="col-12 col-lg-4">
                 <div class="big">
                     <div class="big-column">
+                        <h3>Юнистрим</h3>
                         <h1>{{ rates.unistream[0].rate }}</h1>
                         <h2>${{ $filters.currencyFormat(3492000 / rates.unistream[0].rate) }}</h2>
                     </div>

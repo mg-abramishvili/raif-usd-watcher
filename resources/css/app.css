@@ -59,11 +59,19 @@ body {
     margin-bottom: 20px;
     flex-wrap: wrap;
     justify-content: center;
+    position: relative;
 }
 @media (min-width: 992px) {
     .big-column {
         padding: 40px
     }
+}
+.big-column h3 {
+    margin: 0;
+    position: absolute;
+    font-size: 12px;
+    top: 10px;
+    left: 10px;
 }
 .middle-column {
     padding: 20px 40px;
