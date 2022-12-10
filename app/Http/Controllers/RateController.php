@@ -28,7 +28,7 @@ class RateController extends Controller
         $this->storeRaif();
 
         sleep(5);
-        return $this->storeKorona();
+        $this->storeKorona();
         
         sleep(10);
         $this->storeUnistream();
@@ -68,7 +68,7 @@ class RateController extends Controller
         
         foreach($telegramUsers as $user)
         {
-            return $this->sendMessageToTelgeram($user, $rate);
+            $this->sendMessageToTelgeram($user, $rate);
         }
     }
 
@@ -106,7 +106,7 @@ class RateController extends Controller
         
         foreach($telegramUsers as $user)
         {
-            return $this->sendMessageToTelgeram($user, $rate);
+            $this->sendMessageToTelgeram($user, $rate);
         }
     }
 
@@ -144,7 +144,7 @@ class RateController extends Controller
         
         foreach($telegramUsers as $user)
         {
-            return $this->sendMessageToTelgeram($user, $rate);
+            $this->sendMessageToTelgeram($user, $rate);
         }
     }
 
