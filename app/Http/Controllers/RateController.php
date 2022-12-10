@@ -80,16 +80,16 @@ class RateController extends Controller
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-        $headers = array(
-            "Accept: application/json",
-        );
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        // $headers = array(
+        //     "Accept: application/json",
+        // );
+        // curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
         $response = curl_exec($curl); curl_close($curl);
 
-        dd($response);
+        return $response;
 
         $lastRate = KoronaRate::orderBy('created_at', 'desc')->first();
 
