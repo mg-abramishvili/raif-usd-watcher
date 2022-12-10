@@ -46,10 +46,10 @@ body {
         font-size: 40px;
     }
 }
-.big h2:before {
+/* .big h2:before {
     content: '\2192';
     margin: 0 25px;
-}
+} */
 .big-column {
     display: flex;
     align-items: center;
