@@ -54,7 +54,7 @@ body {
     display: flex;
     align-items: center;
     background-color: #fff;
-    padding: 20px;
+    padding: 25px;
     border-radius: 15px;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -63,7 +63,7 @@ body {
 }
 @media (min-width: 992px) {
     .big-column {
-        padding: 40px
+        padding: 40px;
     }
 }
 .big-column h3 {
