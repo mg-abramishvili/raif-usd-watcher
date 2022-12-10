@@ -28,7 +28,7 @@ class RateController extends Controller
         $this->storeRaif();
 
         sleep(5);
-        $this->storeKorona();
+        return $this->storeKorona();
         
         sleep(10);
         $this->storeUnistream();
@@ -89,7 +89,7 @@ class RateController extends Controller
 
         $response = curl_exec($curl); curl_close($curl);
 
-        $responseRate = json_decode($response)->first()->exchangeRate;
+        return json_decode($response);
 
         $lastRate = KoronaRate::orderBy('created_at', 'desc')->first();
 
