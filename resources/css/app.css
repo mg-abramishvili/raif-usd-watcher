@@ -27,7 +27,7 @@ body {
 
 .big h1 {
     margin: 0;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 700;
 }
 @media (min-width: 992px) {
@@ -37,7 +37,7 @@ body {
 }
 .big h2 {
     margin: 0;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 400;
     color: #6C737C;
 }
@@ -46,10 +46,10 @@ body {
         font-size: 40px;
     }
 }
-/* .big h2:before {
+.big h2:before {
     content: '\2192';
-    margin: 0 25px;
-} */
+    margin: 0 20px;
+}
 .big-column {
     display: flex;
     align-items: center;
