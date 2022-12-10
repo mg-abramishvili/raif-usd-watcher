@@ -68,7 +68,7 @@ class RateController extends Controller
         
         foreach($telegramUsers as $user)
         {
-            $this->sendMessageToTelgeram($user, $rate);
+            $this->sendMessageToTelgeram('Райф', $user, $rate);
         }
     }
 
@@ -106,7 +106,7 @@ class RateController extends Controller
         
         foreach($telegramUsers as $user)
         {
-            $this->sendMessageToTelgeram($user, $rate);
+            $this->sendMessageToTelgeram('Корона', $user, $rate);
         }
     }
 
@@ -144,11 +144,11 @@ class RateController extends Controller
         
         foreach($telegramUsers as $user)
         {
-            $this->sendMessageToTelgeram($user, $rate);
+            $this->sendMessageToTelgeram('Юнистрим', $user, $rate);
         }
     }
 
-    public function sendMessageToTelgeram($user, $rate)
+    public function sendMessageToTelgeram($srv, $user, $rate)
     {
         $url = "https://api.telegram.org/bot";
         $url .= Setting::find(1)->telegram_api_key;
@@ -156,7 +156,7 @@ class RateController extends Controller
         $url .= "?chat_id=";
         $url .= $user->chat_id;
         $url .= "&text=";
-        $url .= "Курс: " . $rate->rate . "; Сумма: $" . round(3492000 / $rate->rate);
+        $url .= $srv . ": " . $rate->rate . "; Сумма: $" . round(3492000 / $rate->rate);
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
