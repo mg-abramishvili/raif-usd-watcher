@@ -43,7 +43,7 @@ body {
 }
 @media (min-width: 992px) {
     .big h2 {
-        font-size: 38px;
+        font-size: 36px;
     }
 }
 .big h2:before {
