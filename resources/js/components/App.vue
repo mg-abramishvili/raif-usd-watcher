@@ -1,11 +1,11 @@
 <template>
-    <div v-if="rates.length" class="container">
+    <div v-if="rates.raif.length && rates.korona.length && rates.unistream.length" class="container">
         <div class="row">
             <div class="col-12">
                 <div class="big">
                     <div class="big-column">
-                        <h1>{{ rates[0].rate }}</h1>
-                        <h2>${{ $filters.currencyFormat(3492000 / rates[0].rate) }}</h2>
+                        <h1>{{ rates.raif[0].rate }}</h1>
+                        <h2>${{ $filters.currencyFormat(3492000 / rates.raif[0].rate) }}</h2>
                     </div>
                 </div>
             </div>
@@ -16,13 +16,13 @@
                     <div class="best-table">
                         <div class="best-table-item">
                             <div>
-                                {{ $filters.datetime(minRate.created_at) }}
+                                {{ $filters.datetime(min.raif.created_at) }}
                             </div>
                             <div>
-                                {{ minRate.rate }}
+                                {{ min.raif.rate }}
                             </div>
                             <div>
-                                ${{ $filters.currencyFormat(3492000 / minRate.rate) }}
+                                ${{ $filters.currencyFormat(3492000 / min.raif.rate) }}
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                     <p>История курсов:</p>
 
                     <div class="history-table">
-                        <div v-for="rateItem in rates.slice(1)" class="history-table-item">
+                        <div v-for="rateItem in rates.raif.slice(1)" class="history-table-item">
                             <div>
                                 {{ $filters.datetime(rateItem.created_at) }}
                             </div>
@@ -55,9 +55,17 @@
 export default {
     data() {
         return {
-            rates: [],
+            rates: {
+                raif: [],
+                korona: [],
+                unistream: [],
+            },
 
-            minRate: '',
+            min: {
+                raif: '',
+                korona: '',
+                unistream: '',
+            },
         }
     },
     created() {
@@ -67,8 +75,12 @@ export default {
         loadRates() {
             axios.get('/rates')
             .then(response => {
-                this.rates = response.data.rates
-                this.minRate = response.data.min
+                this.rates.raif = response.data.raif_rates
+                this.rates.korona = response.data.korona_rates
+                this.rates.unistream = response.data.unistream_rates
+                this.min.raif = response.data.raif_min
+                this.min.korona = response.data.korona_min
+                this.min.unistream = response.data.unistream_min
             })
         },
     },

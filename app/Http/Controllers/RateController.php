@@ -14,12 +14,12 @@ class RateController extends Controller
     public function index()
     {
         return response()->json([
-            'rates' => Rate::orderBy('created_at', 'desc')->get(),
+            'raif_rates' => Rate::orderBy('created_at', 'desc')->get(),
+            'raif_min' => Rate::orderBy('rate', 'asc')->first(),
             'korona_rates' => KoronaRate::orderBy('created_at', 'desc')->get(),
+            'korona_min' => KoronaRate::orderBy('rate', 'asc')->first(),
             'unistream_rates' => UnistreamRate::orderBy('created_at', 'desc')->get(),
-            'min' => Rate::orderBy('rate', 'asc')->first(),
-            'min_korona' => KoronaRate::orderBy('rate', 'asc')->first(),
-            'min_unistream' => UnistreamRate::orderBy('rate', 'asc')->first(),
+            'unistream_min' => UnistreamRate::orderBy('rate', 'asc')->first(),
         ]);
     }
 
