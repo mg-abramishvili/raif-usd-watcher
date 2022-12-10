@@ -93,7 +93,7 @@ class RateController extends Controller
 
         $lastRate = KoronaRate::orderBy('created_at', 'desc')->first();
 
-        if($lastRate && $lastRate->rate == $responseRate) {
+        if($lastRate && $lastRate->rate == round($responseRate, 2)) {
             return;
         }
 
