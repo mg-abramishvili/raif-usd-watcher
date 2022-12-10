@@ -89,7 +89,7 @@ class RateController extends Controller
 
         $response = curl_exec($curl); curl_close($curl);
 
-        return json_decode($response);
+        return $response;
 
         $lastRate = KoronaRate::orderBy('created_at', 'desc')->first();
 
