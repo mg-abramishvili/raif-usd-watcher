@@ -91,8 +91,6 @@ class RateController extends Controller
 
         $responseRate = json_decode($response)[0]->exchangeRate;
 
-        return $responseRate;
-
         $lastRate = KoronaRate::orderBy('created_at', 'desc')->first();
 
         if($lastRate && $lastRate->rate == $responseRate) {
